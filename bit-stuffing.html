@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>bit</title>
+</head>
+<body>
+
+	<style type="text/css">
+		@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700,800,900&display=swap');
+		*{
+			margin: 0;
+			padding:0;
+			box-sizing: border-box;
+			font-family: 'Poppins',sans-serif;
+			
+		}
+		body
+		{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			min-height: 100vh;
+			background: #131419;
+		}
+
+		.form{
+			position: relative;
+			width: 350px;
+			padding: 40px 40px 60px;
+			background:#131419;
+			border-radius: 10px;
+			text-align: center;
+			box-shadow: -5px -5px 10px rgba(255,255,255,0.05),
+						-5px -5px 15px rgba(0,0,0,0.5);
+		}
+
+		.form h2{
+			color:#c7c7c7;
+			font-weight: 500;
+			text-transform: uppercase;
+			letter-spacing: 4px; 
+		}
+		.form .input .inputbox {
+			margin-top: 20px;
+		}
+		.form .input .inputbox label {
+			display: block;
+			color: #868686;
+			margin-bottom: 5px;
+			font-size: 18px;
+
+		}
+
+		.form .input .inputbox input{
+			width: 100%;
+			
+			height: 50px;
+			background: #131419;
+			border:none;
+			outline: none;
+			border-radius: 40px;
+			padding:5px 15px;
+			color: #fff;
+			font-size: 18px;
+			color:#03a9fa;
+			box-shadow: inset -2px -2px 6px rgba(255,255,255,0.1),
+						inset 2px 2px 6px rgba(0,0,0,0.8);
+
+
+		}
+
+		.form .input .inputbox input[type="submit"]
+		{
+			margin-top: 20px;
+			box-shadow:  -2px -2px 6px rgba(255,255,255,0.1),
+						 2px 2px 6px rgba(0,0,0,0.8);
+
+		}
+
+		.form .input .inputbox input[type="submit"]:active{
+			columns: #006c9c;
+			margin-top: 20px;
+			box-shadow: inset -2px -2px 6px rgba(255,255,255,0.1),
+						inset 2px 2px 6px rgba(0,0,0,0.8);
+		}
+
+		.form .input .inputbox input::placeholder{
+			color: #555;
+			font-size: 18px;
+		}
+
+		.forget{
+			margin-top: 30px;
+			color: #555;
+		}
+
+		.forget a{
+			color:#ff0047;
+		}
+
+		#submit-button{
+			display: flex;
+			justify-content: center;
+			/margin:40px;/
+			letter-spacing: 0px;
+			width: 280px;
+		}
+
+		#destuffing{
+			margin-left: 60px;
+			cursor: pointer;
+		}
+
+		#stuffing{
+			cursor: pointer;
+		}
+
+		#result{
+			visibility: hidden;
+		}
+		
+		#result input, #input-box input{
+			letter-spacing: 4px;
+		}
+
+
+
+
+	</style>
+
+
+	<script type="text/javascript">
+		function destuff(){
+			var str=document.getElementById('input').value
+			var ans="";
+			let cnt=0;
+			for(let i=0;i<str.length;i++)
+			{
+				// console.log('hellllo')
+				if(str[i]=='1')
+				{
+					ans+=str[i];
+					cnt++;
+					if(cnt==5)
+					{
+						cnt=0;
+						i++;
+					}
+				}
+				else
+				{
+					ans+=str[i];
+					cnt=0;
+				}
+			}
+			// console.log(str);
+			// console.log(ans);
+			document.getElementById('result').style.visibility='visible'
+			document.getElementById('ans').value=ans
+			document.getElementById('ans-label').innerHTML='DeStuffed'
+		}
+
+		function stuff(){
+			var str=document.getElementById('input').value
+			var ans="";
+			let cnt=0;
+			for(let i=0;i<str.length;i++)
+			{
+				// console.log('hellllo')
+				if(str[i]=='1')
+				{
+					ans+=str[i];
+					cnt++;
+					if(cnt==5)
+					{
+						ans+='0';
+						cnt=0;
+					}
+				}
+				else
+				{
+					ans+=str[i];
+					cnt=0;
+				}
+			}
+			// console.log(str);
+			// console.log(ans);
+			document.getElementById('result').style.visibility='visible'
+			document.getElementById('ans').value=ans
+			document.getElementById('ans-label').innerHTML='Stuffed'
+		}
+
+	</script>
+
+	<div class="form">
+		<h2>stuffing & destuffing</h2>
+		<div class="input">
+			<div class="inputbox" id="input-box">
+				<label>Input-Message</label>
+				<input type="text" name="" placeholder="eg. 110101010101" id="input">
+			</div>
+
+			<div class="inputbox" id="result">
+				<label id="ans-label"></label>
+				<input type="text" name="" placeholder="****" value="10001001" id="ans">
+			</div>
+
+			<div class="button-box">
+				<div class="inputbox" id="submit-button">
+					
+					<input onclick="stuff()" type="Submit" name="" value="Stuff" id="stuffing">
+
+					<input onclick="destuff()" type="Submit" name="" value="DeStuff" id="destuffing">
+				</div>
+			</div>
+			
+			<!-- <p class="forget">Want to check code ? <a href="#">Click Here</a></p> -->
+			
+		</div>
+</body>
+</html>
